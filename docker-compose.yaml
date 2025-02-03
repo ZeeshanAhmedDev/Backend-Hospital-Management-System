@@ -1,0 +1,23 @@
+
+services:
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "5000:5001"
+    environment:
+      - MONGO_URI=mongodb+srv://Zeeshan:NartSuk%400300@hospitalmanagement.a9nit.mongodb.net/auth-db
+      - JWT_SECRET=eyJhbGciO
+
+  appointment-service:
+    build: ./appointment-service
+    ports:
+      - "6000:6001"
+    environment:
+      - MONGO_URI=mongodb+srv://Zeeshan:NartSuk%400300@hospitalmanagement.a9nit.mongodb.net/appointment-db
+
+  patient-service:
+    build: ./patient-service
+    ports:
+      - "7000:7001"
+    environment:
+      - MONGO_URI=mongodb+srv://Zeeshan:NartSuk%400300@hospitalmanagement.a9nit.mongodb.net/patient-db
