@@ -10,9 +10,11 @@ const {
 
 const router = express.Router();
 
-// Routes
-router.post('/register', registerPatient);
+// 🚀 Define login before any dynamic :id routes
 router.post('/login', loginPatient);
+router.post('/register', registerPatient);
+
+// Routes
 router.get('/:id', getPatientProfile);
 router.put('/:id', updatePatientProfile);
 router.get('/:id/medical-records', getMedicalRecords);

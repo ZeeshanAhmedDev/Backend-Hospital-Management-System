@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { register, login, forgotPassword } = require('../controllers/authController');
+const { register, login, forgotPassword,resetPassword   } = require('../controllers/authController');
 
 
 const router = express.Router();
@@ -9,6 +9,8 @@ const router = express.Router();
 router.post('/register', register);
 router.post('/login', login);
 router.post('/forgot-password', forgotPassword);
+router.get('/reset-password/:token', resetPassword);  // For link validation
+router.post('/reset-password/:token', resetPassword); // For password submission
 
 
 

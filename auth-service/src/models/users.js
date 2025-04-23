@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   address: { type: String },
   role: { type: String, enum: ['Patient', 'Staff'], required: true }, // Role can be either Patient or Staff
+
+  resetPasswordToken: String,
+  resetPasswordExpire: Date
+  
 });
 
 module.exports = mongoose.model('User', userSchema);

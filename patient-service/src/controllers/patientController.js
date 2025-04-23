@@ -53,6 +53,11 @@ const loginPatient = async (req, res) => {
 const getPatientProfile = async (req, res) => {
   const { id } = req.params;
 
+   // ✅ Validate if ID is a valid ObjectId
+   if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: 'Invalid patient ID' });
+  }
+
   try {
     const patient = await Patient.findById(id).populate('medicalRecords');
     if (!patient) {

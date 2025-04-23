@@ -5,6 +5,7 @@ const authRoutes = require('./src/routes/authRoutes');
 
 
 
+
 dotenv.config();
 const app = express();
 
@@ -13,6 +14,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', authRoutes);
