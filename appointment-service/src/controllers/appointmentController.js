@@ -23,7 +23,7 @@ const validateDoctor = async (doctorId) => {
 
 // Create a new appointment
 const createAppointment = async (req, res) => {
-  const { patientId, doctorId, date, time, notes } = req.body;
+  const { patientId, doctorId, date, time, notes,firstName,lastName,dob,email,phone,bookingDate } = req.body;
 
   try {
     // Validate patient and doctor IDs
@@ -36,6 +36,12 @@ const createAppointment = async (req, res) => {
       date,
       time,
       notes,
+      firstName,
+      lastName,
+      dob,
+      email,
+      phone,
+      bookingDate
     });
 
     await appointment.save();
@@ -128,3 +134,10 @@ module.exports = {
   updateAppointment,
   cancelAppointment,
 };
+
+
+
+
+
+
+

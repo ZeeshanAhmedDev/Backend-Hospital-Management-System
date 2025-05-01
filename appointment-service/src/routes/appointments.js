@@ -7,6 +7,8 @@ const {
   cancelAppointment,
 } = require('../controllers/appointmentController');
 
+
+
 const router = express.Router();
 
 // Routes
