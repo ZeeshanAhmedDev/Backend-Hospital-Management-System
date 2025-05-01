@@ -1,5 +1,6 @@
 const Staff = require('../models/staff');
 const bcrypt = require('bcryptjs');
+const Admission = require('../models/patientAdmission');
 
 // Register a new staff member
 const registerStaff = async (req, res) => {
@@ -118,6 +119,36 @@ const manageSchedule = async (req, res) => {
   }
 };
 
+
+
+
+
+//Admit a patient
+const admitPatient = async (req, res) => {
+  const { name, dob, phone, ward, bed } = req.body;
+
+  try {
+    const newAdmission = new Admission({ name, dob, phone, ward, bed });
+    await newAdmission.save();
+    res.status(201).json({ message: 'Patient admitted successfully', patient: newAdmission });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+//List all admitted patients
+const getAdmittedPatients = async (req, res) => {
+  try {
+    const patients = await Admission.find();
+    res.status(200).json(patients);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
 module.exports = {
   registerStaff,
   loginStaff,
@@ -125,4 +156,6 @@ module.exports = {
   updateStaffProfile,
   assignWards,
   manageSchedule,
+  admitPatient,
+  getAdmittedPatients
 };
