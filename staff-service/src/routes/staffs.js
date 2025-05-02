@@ -7,13 +7,13 @@ const {
   assignWards,
   manageSchedule,
   admitPatient, getAdmittedPatients,
-  updateAdmission, deleteAdmission
+  updateAdmission, deleteAdmission,getAdmissionById
 } = require('../controllers/staffController');
 
 const router = express.Router();
 
 // Routes
-
+router.get('/admissions/:id', getAdmissionById);
 router.post('/admit', admitPatient);
 router.get('/admissions', getAdmittedPatients);
 router.put('/admissions/:id', updateAdmission);

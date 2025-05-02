@@ -182,6 +182,24 @@ const deleteAdmission = async (req, res) => {
   }
 };
 
+// Get detials of admitted patient
+const getAdmissionById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const patient = await Admission.findById(id);
+
+    if (!patient) {
+      return res.status(404).json({ message: 'Admitted patient not found' });
+    }
+
+    res.status(200).json(patient);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 
 
 
@@ -197,5 +215,6 @@ module.exports = {
   getAdmittedPatients,
 updateAdmission,
 deleteAdmission,
+getAdmissionById
 
 };
