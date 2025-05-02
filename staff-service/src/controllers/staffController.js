@@ -147,6 +147,43 @@ const getAdmittedPatients = async (req, res) => {
 };
 
 
+// Update an admitted patient
+const updateAdmission = async (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+
+  try {
+    const updatedPatient = await Admission.findByIdAndUpdate(id, updates, { new: true });
+
+    if (!updatedPatient) {
+      return res.status(404).json({ message: 'Admitted patient not found' });
+    }
+
+    res.status(200).json({ message: 'Admission updated successfully', patient: updatedPatient });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Delete an admitted patient
+const deleteAdmission = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedPatient = await Admission.findByIdAndDelete(id);
+
+    if (!deletedPatient) {
+      return res.status(404).json({ message: 'Admitted patient not found' });
+    }
+
+    res.status(200).json({ message: 'Admission deleted successfully', patient: deletedPatient });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
 
 
 module.exports = {
@@ -157,5 +194,8 @@ module.exports = {
   assignWards,
   manageSchedule,
   admitPatient,
-  getAdmittedPatients
+  getAdmittedPatients,
+updateAdmission,
+deleteAdmission,
+
 };
