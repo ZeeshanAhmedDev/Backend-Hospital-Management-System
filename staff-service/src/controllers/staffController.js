@@ -125,10 +125,10 @@ const manageSchedule = async (req, res) => {
 
 //Admit a patient
 const admitPatient = async (req, res) => {
-  const { name, dob, phone, ward, bed } = req.body;
+  const { name, dob, phone, ward, bed, condition } = req.body;
 
   try {
-    const newAdmission = new Admission({ name, dob, phone, ward, bed });
+    const newAdmission = new Admission({ name, dob, phone, ward, bed,condition });
     await newAdmission.save();
     res.status(201).json({ message: 'Patient admitted successfully', patient: newAdmission });
   } catch (err) {
