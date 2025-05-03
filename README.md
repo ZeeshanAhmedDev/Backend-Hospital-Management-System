@@ -66,7 +66,7 @@ The services will start on the following ports:
 
 Please go to the provided link below, A postman collection for the APIs for each service:
 
-[Postman Collection - Hospital Management System](https://hospital-domain.postman.co/workspace/Hospital-Management-System~ec8c6c3d-5d86-4474-9a48-d3a5022378e9/collection/17839336-7f3bfeb0-8d0c-460f-aed6-7fa225e02fef?action=share&creator=17839336)
+[Postman Collection - Hospital Management System](screenshots/Hospital%20Management%20System.postman_collection.json)
 
 ---
 
