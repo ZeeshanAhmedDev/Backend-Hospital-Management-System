@@ -10,15 +10,29 @@ const StaffSchema = new mongoose.Schema({
   ref: 'User'
  },
 
- 
+  firstName: {
+     type: String,
+     required: true
+  },
+    lastName: {
+     type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    phoneNumber: {
+      type: String
+    },
+    address: {
+      type: String
+    },
 
-  name: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String,  },
   role: { type: String, enum: ['Staff','doctor', 'nurse', 'admin'], required: true },
-
-
-
 
 
   schedule: [

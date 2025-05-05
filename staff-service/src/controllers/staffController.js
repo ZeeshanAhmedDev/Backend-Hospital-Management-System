@@ -47,23 +47,64 @@ const loginStaff = async (req, res) => {
 
 
 
+// const getMyStaffProfile = async (req, res) => {
+//   try {
+
+//     const staff = await Staff.findOneAndUpdate(
+//       { userId: req.userId },           
+//       {
+//         $setOnInsert: {                 
+//           userId:     req.userId,
+//           name:       req.userName,
+//           email:      req.userEmail,
+//           role:       req.userRole,
+         
+//         }
+//       },
+//       {
+//         new:    true,   // return the new document 
+//         upsert: true    // create doc if none matches
+//       }
+//     );
+
+//     return res.status(200).json(staff);
+//   } catch (err) {
+//     console.error('❌ Error in getMyStaffProfile:', err);
+//     return res.status(500).json({ error: err.message });
+//   }
+// };
+
+
+
+
+// Get staff profile
+
+
+// controllers/staffController.js
 const getMyStaffProfile = async (req, res) => {
   try {
-
     const staff = await Staff.findOneAndUpdate(
-      { userId: req.userId },           
+      { userId: req.userId },
       {
-        $setOnInsert: {                 
-          userId:     req.userId,
-          name:       req.userName,
-          email:      req.userEmail,
-          role:       req.userRole,
-         
+        // These fields will be created/updated every time
+        $set: {
+          firstName:   req.userFirst,
+          lastName:    req.userLast,
+          email:       req.userEmail,
+          phoneNumber: req.userPhone,
+          address:     req.userAddress,
+          role:        req.userRole
+        },
+        // Only on initial insert
+        $setOnInsert: {
+          userId:        req.userId,
+          wardsAssigned: [],   // default once
+          schedule:      []
         }
       },
       {
-        new:    true,   // return the new document 
-        upsert: true    // create doc if none matches
+        new:    true,   // return the updated or newly inserted doc
+        upsert: true    // insert if missing
       }
     );
 
@@ -76,8 +117,6 @@ const getMyStaffProfile = async (req, res) => {
 
 
 
-
-// Get staff profile
 const getStaffProfile = async (req, res) => {
   const { id } = req.params;
 

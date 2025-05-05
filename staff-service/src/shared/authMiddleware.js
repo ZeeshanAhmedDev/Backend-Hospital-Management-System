@@ -28,6 +28,12 @@ function authenticate(req, res, next) {
 
   req.userId   = decoded.userId;
   req.userRole = decoded.role;
+
+   req.userEmail    = decoded.email;
+ req.userFirst    = decoded.firstName;
+req.userLast     = decoded.lastName;
+ req.userPhone    = decoded.phoneNumber;
+req  .userAddress  = decoded.address;
   next();
 }
 
