@@ -44,6 +44,39 @@ const loginStaff = async (req, res) => {
   }
 };
 
+
+
+
+const getMyStaffProfile = async (req, res) => {
+  try {
+
+    const staff = await Staff.findOneAndUpdate(
+      { userId: req.userId },           
+      {
+        $setOnInsert: {                 
+          userId:     req.userId,
+          name:       req.userName,
+          email:      req.userEmail,
+          role:       req.userRole,
+         
+        }
+      },
+      {
+        new:    true,   // return the new document 
+        upsert: true    // create doc if none matches
+      }
+    );
+
+    return res.status(200).json(staff);
+  } catch (err) {
+    console.error('❌ Error in getMyStaffProfile:', err);
+    return res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
 // Get staff profile
 const getStaffProfile = async (req, res) => {
   const { id } = req.params;
@@ -204,9 +237,16 @@ const getAdmissionById = async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
 module.exports = {
-  registerStaff,
-  loginStaff,
+  getMyStaffProfile,
   getStaffProfile,
   updateStaffProfile,
   assignWards,

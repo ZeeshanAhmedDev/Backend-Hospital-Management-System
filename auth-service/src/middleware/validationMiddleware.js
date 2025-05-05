@@ -1,37 +1,29 @@
 
 const jwt = require('jsonwebtoken');
 
-const authenticate = (req, res, next) => {
-  const token = req.header('Authorization');
-  if (!token) {
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined.');
+}
+
+function authenticate(req, res, next) {
+  const authHeader = req.header('Authorization');
+  if (!authHeader) {
     return res.status(401).json({ message: 'No token, authorization denied' });
   }
 
+  const token = authHeader.startsWith('Bearer ')
+    ? authHeader.slice(7).trim()
+    : authHeader.trim();
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach user info to the request
+    req.userId   = decoded.userId;
+    req.userRole = decoded.role;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token is not valid' });
+    console.error('JWT invalid', err);
+    return res.status(401).json({ message: 'Token is not valid' });
   }
-};
+}
 
-
-const validateRegister = (req, res, next) => {
-    const { firstName, lastName, phoneNumber, email, password, confirmPassword, role } = req.body;
-  
-    if (!firstName || !lastName || !phoneNumber || !email || !password || !confirmPassword || !role) {
-      return res.status(400).json({ message: 'All fields are required' });
-    }
-  
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: 'Passwords do not match' });
-    }
-  
-    next();
-  };
-
-
-module.exports = { authenticate, validateRegister };
-
-  
+module.exports = authenticate;
