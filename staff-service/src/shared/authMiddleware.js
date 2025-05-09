@@ -15,26 +15,20 @@ function authenticate(req, res, next) {
     ? authHeader.slice(7).trim()
     : authHeader.trim();
 
-  let decoded;
   try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;
+    req.userRole = decoded.role;
+    req.userEmail = decoded.email;
+    req.userFirst = decoded.firstName;
+    req.userLast = decoded.lastName;
+    req.userPhone = decoded.phoneNumber;
+    req.userAddress = decoded.address;
+    next();
   } catch (err) {
     console.error('JWT invalid', err);
     return res.status(401).json({ message: 'Token is not valid' });
   }
-
-  // DEBUG: log what we got from the token
-  console.log('🔒 Authenticated request for userId:', decoded.userId, 'role:', decoded.role);
-
-  req.userId   = decoded.userId;
-  req.userRole = decoded.role;
-
-   req.userEmail    = decoded.email;
- req.userFirst    = decoded.firstName;
-req.userLast     = decoded.lastName;
- req.userPhone    = decoded.phoneNumber;
-req  .userAddress  = decoded.address;
-  next();
 }
 
 module.exports = authenticate;
