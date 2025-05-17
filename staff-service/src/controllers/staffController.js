@@ -4,15 +4,14 @@ const Admission = require('../models/patientAdmission');
 
 // Register a new staff member
 const registerStaff = async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, phoneNumber, address, role } = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const staff = new Staff({
       name,
       email,
-      password: hashedPassword,
+      phoneNumber,
+      address,
       role,
     });
 
@@ -45,38 +44,6 @@ const loginStaff = async (req, res) => {
 };
 
 
-
-
-// const getMyStaffProfile = async (req, res) => {
-//   try {
-
-//     const staff = await Staff.findOneAndUpdate(
-//       { userId: req.userId },           
-//       {
-//         $setOnInsert: {                 
-//           userId:     req.userId,
-//           name:       req.userName,
-//           email:      req.userEmail,
-//           role:       req.userRole,
-         
-//         }
-//       },
-//       {
-//         new:    true,   // return the new document 
-//         upsert: true    // create doc if none matches
-//       }
-//     );
-
-//     return res.status(200).json(staff);
-//   } catch (err) {
-//     console.error('❌ Error in getMyStaffProfile:', err);
-//     return res.status(500).json({ error: err.message });
-//   }
-// };
-
-
-
-
 // Get staff profile
 
 
@@ -88,29 +55,29 @@ const getMyStaffProfile = async (req, res) => {
       {
         // These fields will be created/updated every time
         $set: {
-          firstName:   req.userFirst,
-          lastName:    req.userLast,
-          email:       req.userEmail,
+          firstName: req.userFirst,
+          lastName: req.userLast,
+          email: req.userEmail,
           phoneNumber: req.userPhone,
-          address:     req.userAddress,
-          role:        req.userRole
+          address: req.userAddress,
+          role: req.userRole
         },
         // Only on initial insert
         $setOnInsert: {
-          userId:        req.userId,
+          userId: req.userId,
           wardsAssigned: [],   // default once
-          schedule:      []
+          schedule: []
         }
       },
       {
-        new:    true,   // return the updated or newly inserted doc
+        new: true,   // return the updated or newly inserted doc
         upsert: true    // insert if missing
       }
     );
 
     return res.status(200).json(staff);
   } catch (err) {
-    console.error('❌ Error in getMyStaffProfile:', err);
+    console.error(' Error in getMyStaffProfile:', err);
     return res.status(500).json({ error: err.message });
   }
 };
@@ -126,6 +93,16 @@ const getStaffProfile = async (req, res) => {
       return res.status(404).json({ message: 'Staff not found' });
     }
     res.status(200).json(staff);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// get all register staff
+const getAllStaff = async (req, res) => {
+  try {
+    const doctors = await Staff.find();
+    res.status(200).json(doctors);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -169,15 +146,15 @@ const assignWards = async (req, res) => {
   }
 };
 
-// Manage staff schedule
-const manageSchedule = async (req, res) => {
+// remove ward 
+const removeWard = async (req, res) => {
   const { id } = req.params;
-  const { schedule } = req.body;
+  const { ward } = req.body;
 
   try {
     const staff = await Staff.findByIdAndUpdate(
       id,
-      { $set: { schedule } },
+      { $pull: { wardsAssigned: ward } },
       { new: true }
     );
 
@@ -185,13 +162,58 @@ const manageSchedule = async (req, res) => {
       return res.status(404).json({ message: 'Staff not found' });
     }
 
-    res.status(200).json({ message: 'Schedule updated successfully', staff });
+    res.status(200).json({ message: 'Ward removed successfully', staff });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Manage staff schedule
+const manageSchedule = async (req, res) => {
+  const { id } = req.params;
+  const { date, shift } = req.body;
+
+  try {
+    const scheduleEntry = { date: new Date(date), shift };
+    const staff = await Staff.findByIdAndUpdate(
+      id,
+      { $push: { schedule: scheduleEntry } },
+      { new: true }
+    );
+
+    if (!staff) {
+      return res.status(404).json({ message: 'Staff not found' });
+    }
+
+    res.status(200).json({ message: 'Schedule added successfully', staff });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
 
+// removing shift
+// controllers/staffController.js
+const removeShift = async (req, res) => {
+  const { id } = req.params;
+  const { date } = req.body;
+
+  try {
+    const staff = await Staff.findByIdAndUpdate(
+      id,
+      { $pull: { schedule: { date: new Date(date) } } },
+      { new: true }
+    );
+
+    if (!staff) {
+      return res.status(404).json({ message: 'Staff not found' });
+    }
+
+    res.status(200).json({ message: 'Shift removed', staff });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 
 
@@ -200,7 +222,7 @@ const admitPatient = async (req, res) => {
   const { name, dob, phone, ward, bed, condition } = req.body;
 
   try {
-    const newAdmission = new Admission({ name, dob, phone, ward, bed,condition });
+    const newAdmission = new Admission({ name, dob, phone, ward, bed, condition });
     await newAdmission.save();
     res.status(201).json({ message: 'Patient admitted successfully', patient: newAdmission });
   } catch (err) {
@@ -273,27 +295,20 @@ const getAdmissionById = async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
+  registerStaff,
   getMyStaffProfile,
   getStaffProfile,
+  getAllStaff,
   updateStaffProfile,
   assignWards,
+  removeWard,
   manageSchedule,
+  removeShift,
   admitPatient,
   getAdmittedPatients,
-updateAdmission,
-deleteAdmission,
-getAdmissionById
+  updateAdmission,
+  deleteAdmission,
+  getAdmissionById
 
 };

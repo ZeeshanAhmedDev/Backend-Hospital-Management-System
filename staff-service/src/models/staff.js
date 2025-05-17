@@ -1,38 +1,31 @@
 const mongoose = require('mongoose');
-
+const { v4: uuidv4 } = require('uuid');
 const StaffSchema = new mongoose.Schema({
 
-      // reference back to Auth-service user
- userId: {
-  type: mongoose.Schema.Types.ObjectId,
-  required: true,
-  unique: true,
-  ref: 'User'
- },
-
-  firstName: {
-     type: String,
-     required: true
+  // reference back to Auth-service user
+  userId: {
+    type: String,
+    required: true,
+    unique: true,
+    default: () => uuidv4(),
   },
-    lastName: {
-     type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true
-    },
-    phoneNumber: {
-      type: String
-    },
-    address: {
-      type: String
-    },
 
-  email: { type: String, unique: true, required: true },
-  password: { type: String,  },
-  role: { type: String, enum: ['Staff','doctor', 'nurse', 'admin'], required: true },
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  phoneNumber: {
+    type: String
+  },
+  address: {
+    type: String
+  },
+  role: { type: String, enum: ['Staff', 'doctor', 'nurse', 'admin'], required: true },
 
 
   schedule: [
@@ -42,6 +35,7 @@ const StaffSchema = new mongoose.Schema({
     },
   ],
   wardsAssigned: [{ type: String }],
-}, { timestamps: true });
+},
+  { timestamps: true });
 
 module.exports = mongoose.model('Staff', StaffSchema);
