@@ -23,25 +23,19 @@ const validateDoctor = async (doctorId) => {
 
 // Create a new appointment
 const createAppointment = async (req, res) => {
-  const { patientId, doctorId, date, time, notes,firstName,lastName,dob,email,phone,bookingDate } = req.body;
+  const { patientId, doctorId, date, firstName,lastName,email,phone,status } = req.body;
 
   try {
-    // Validate patient and doctor IDs
-    const patient = await validatePatient(patientId);
-    const doctor = await validateDoctor(doctorId);
-
+  
     const appointment = new Appointment({
       patientId,
       doctorId,
       date,
-      time,
-      notes,
       firstName,
       lastName,
-      dob,
       email,
       phone,
-      bookingDate
+      status
     });
 
     await appointment.save();
@@ -109,7 +103,6 @@ const updateAppointment = async (req, res) => {
 // Cancel an appointment
 const cancelAppointment = async (req, res) => {
   const { id } = req.params;
-
   try {
     const appointment = await Appointment.findByIdAndUpdate(
       id,

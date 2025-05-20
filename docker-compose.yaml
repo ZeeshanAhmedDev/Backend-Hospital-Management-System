@@ -1,4 +1,3 @@
-
 services:
   auth-service:
     build: ./auth-service
@@ -11,7 +10,7 @@ services:
   appointment-service:
     build: ./appointment-service
     ports:
-      - "6000:6001"
+      - "9000:9001"
     environment:
       - MONGO_URI=mongodb+srv://Zeeshan:NartSuk%400300@hospitalmanagement.a9nit.mongodb.net/appointment-db
 
