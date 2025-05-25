@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "cd3ae456-6a0a-4c4b-ac46-058fc92e108d",
+		"_postman_id": "1d941632-1c88-4401-9cf4-cbcf85e9d54b",
 		"name": "Hospital Management System",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "43963956",
-		"_collection_link": "https://hasan-4657641.postman.co/workspace/Hasan's-Workspace~92529d25-a8c7-433e-860b-c5ca5e3bc185/collection/43963956-cd3ae456-6a0a-4c4b-ac46-058fc92e108d?action=share&source=collection_link&creator=43963956"
+		"_exporter_id": "17839336",
+		"_collection_link": "https://hospital-domain.postman.co/workspace/Hospital-Management-System~ec8c6c3d-5d86-4474-9a48-d3a5022378e9/collection/17839336-1d941632-1c88-4401-9cf4-cbcf85e9d54b?action=share&source=collection_link&creator=17839336"
 	},
 	"item": [
 		{
@@ -466,36 +466,6 @@
 								"api",
 								"patients",
 								"6799532fac22c94e30abbf03"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login Patient",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"email\": \"johnseena7s86@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:7000/api/patients/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"patients",
-								"login"
 							]
 						}
 					},
