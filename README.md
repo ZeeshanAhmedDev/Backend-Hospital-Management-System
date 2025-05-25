@@ -68,6 +68,11 @@ Please go to the provided link below, A postman collection for the APIs for each
 
 [Postman Collection - Hospital Management System](screenshots/Hospital%20Management%20System.postman_collection.json)
 
+
+Postman Collection given below:
+
+![PostmanCollection](screenshots/postmanCollection.png)
+
 download it and import it into the postman desktop application.
 
 
