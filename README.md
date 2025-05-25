@@ -53,7 +53,7 @@ The services will start on the following ports:
 | Service             | Port  |
 | ------------------- | ----- |
 | Auth Service        | 5000:5001 |
-| Appointment Service | 6000:6001 |
+| Appointment Service | 9000:9001 |
 | Patient Service     | 7000:7001 |
 | Staff Service       | 8000:8001 |
 
@@ -77,6 +77,42 @@ download it and import it into the postman desktop application.
 
 ---
 
+
+## References to the Code
+
+Each microservice has its own directory and internal structure:
+
+* `auth-service/`
+  * Handles login, registration, and password recovery
+  * Entry: `src/controllers/authController.js`
+  * MongoDB connection: `src/config/db.js`
+  * Routes defined in: `src/routes/authRoutes.js`
+
+* `appointment-service/`
+  * Appointment booking and updates with deletion
+  * Entry: `src/controllers/appointmentController.js`
+  * MongoDB connection: `src/config/db.js`
+  * Routes: `src/routes/appointments.js`
+
+* `patient-service/`
+  * Patient profile and medical record management
+  * Entry: `src/controllers/patientController.js`
+  * MongoDB connection: `src/config/db.js`
+  * Routes: `src/routes/patients.js`
+
+* `staff-service/`
+  * Handles staff profile, schedules, admissions, Manage Wards & Beds, Manage Docotrs 
+  * Entry: `src/controllers/staffController.js`
+  * MongoDB connection: `src/config/db.js`
+  * Routes: `src/routes/staffs.js`
+
+* Docker orchestration
+  * Main `docker-compose.yml` manages all services
+  * Each service includes its own `Dockerfile`
+
+You can navigate into each folder to view code and service-specific logic.
+
+---
 
 ## Follow ScreenShots. If you still have not gotten the description
 

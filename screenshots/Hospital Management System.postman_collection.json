@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "7f3bfeb0-8d0c-460f-aed6-7fa225e02fef",
+		"_postman_id": "cd3ae456-6a0a-4c4b-ac46-058fc92e108d",
 		"name": "Hospital Management System",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17839336",
-		"_collection_link": "https://hospital-domain.postman.co/workspace/ec8c6c3d-5d86-4474-9a48-d3a5022378e9/collection/17839336-7f3bfeb0-8d0c-460f-aed6-7fa225e02fef?action=share&source=collection_link&creator=17839336"
+		"_exporter_id": "43963956",
+		"_collection_link": "https://hasan-4657641.postman.co/workspace/Hasan's-Workspace~92529d25-a8c7-433e-860b-c5ca5e3bc185/collection/43963956-cd3ae456-6a0a-4c4b-ac46-058fc92e108d?action=share&source=collection_link&creator=43963956"
 	},
 	"item": [
 		{
@@ -23,7 +23,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"jamee\",\r\n    \"lastName\": \"Ahmed\",\r\n    \"phoneNumber\": \"1234567890\",\r\n    \"email\": \"shanisukkk@gmail.com\",\r\n    \"password\": \"Thistime@0300\",\r\n    \"confirmPassword\": \"password1232\",\r\n    \"address\": \"123 Main Street\",\r\n    \"role\": \"Patient\"\r\n}\r\n",
+							"raw": "{\r\n    \"firstName\": \"Ali\",\r\n    \"lastName\": \"Ahmed\",\r\n    \"phoneNumber\": \"1234567890\",\r\n    \"email\": \"aliahmed@gmail.com\",\r\n    \"password\": \"Thistime@0300\",\r\n    \"confirmPassword\": \"password1232\",\r\n    \"address\": \"123 Main Street\",\r\n    \"role\": \"Staff\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -59,7 +59,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"email\": \"shanisukk@gmail.com\",\r\n    \"password\": \"ThisTime@0300\"\r\n}\r\n",
+							"raw": "{\r\n   \"email\": \"workwithzeeshaan@gmail.com\",\r\n    \"password\": \"workwithzeeshaanworkwithzeeshaan\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -124,7 +124,7 @@
 			"name": "appointments",
 			"item": [
 				{
-					"name": "book appointment",
+					"name": "book an appointment",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -136,7 +136,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"patientId\": \"6799532fac22c94e30abbf03\",\r\n  \"doctorId\": \"679596ddff72a86f3f0572e4\",\r\n  \"date\": \"2025-01-30\",\r\n  \"time\": \"10:00 AM\",\r\n  \"notes\": \"Routine check-up\",\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phone\": \"1234567890\",\r\n  \"bookingDate\": \"2025-01-30\"\r\n}\r\n",
+							"raw": "{\r\n  \"patientId\": \"6799532fac22c94e30abbf03\",\r\n  \"doctorId\": \"679596ddff72a86f3f0572e4\",\r\n  \"date\": \"2025-01-30\",\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phone\": \"1234567890\",\r\n  \"status\": \"booked\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -144,12 +144,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:6000/api/appointments",
+							"raw": "http://localhost:9000/api/appointments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "9000",
 							"path": [
 								"api",
 								"appointments"
@@ -179,12 +179,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:6000/api/appointments/:id",
+							"raw": "http://localhost:9000/api/appointments/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "9000",
 							"path": [
 								"api",
 								"appointments",
@@ -203,7 +203,7 @@
 				{
 					"name": "cancel appointment",
 					"request": {
-						"method": "DELETE",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -212,12 +212,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:6000/api/appointments/:id",
+							"raw": "http://localhost:9000/api/appointments/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "9000",
 							"path": [
 								"api",
 								"appointments",
@@ -226,7 +226,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "67a4b798a360f6928dce0188"
+									"value": "6818a310fe19f4812a74d683"
 								}
 							]
 						}
@@ -234,7 +234,7 @@
 					"response": []
 				},
 				{
-					"name": "get appointment details",
+					"name": "get all appointment",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -245,12 +245,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:6000/api/appointments",
+							"raw": "http://localhost:9000/api/appointments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "9000",
 							"path": [
 								"api",
 								"appointments"
@@ -271,12 +271,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:6000/api/appointments/patient/:patientId",
+							"raw": "http://localhost:9000/api/appointments/patient/:patientId",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "6000",
+							"port": "9000",
 							"path": [
 								"api",
 								"appointments",
@@ -448,7 +448,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n      \r\n        \"name\": \"John Doiii\"\r\n    \r\n    }",
+							"raw": " {\r\n      \r\n        \"name\": \"John DoiiiDoe\"\r\n    \r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -507,42 +507,6 @@
 			"name": "Staff Services",
 			"item": [
 				{
-					"name": "Register Staff",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Dr. Smith\",\r\n  \"email\": \"drsmitddsssh@example.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"doctor\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/staff/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"staff",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Admit Patient",
 					"request": {
 						"method": "POST",
@@ -551,11 +515,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"phone\": \"1234567890\",\r\n  \"ward\": \"General\",\r\n  \"bed\": \"B12\",\r\n  \"condition\": \"Normal\"\r\n}",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"phone\": \"1234567890\",\r\n  \"ward\": \"General\",\r\n  \"bed\": \"08\",\r\n  \"condition\": \"Admitted\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -573,6 +542,13 @@
 								"api",
 								"staff",
 								"admit"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -586,6 +562,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
 								"type": "text"
 							}
 						],
@@ -614,6 +595,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -632,7 +618,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6813e46f2ce34b43d7342837"
+									"value": "6816090f604974f1efe25ee2"
 								}
 							]
 						}
@@ -648,11 +634,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "// {\r\n//   \"ward\": \"ICU\",\r\n//   \"bed\": \"Bed-9\"\r\n// }\r\n\r\n{\r\n  \"name\": \"John Doe\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"phone\": \"1234567890\",\r\n   \"ward\": \"ICU\",\r\n  \"bed\": \"Bed-9\"\r\n}\r\n",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"dob\": \"1990-01-01\",\r\n  \"phone\": \"1234567890\",\r\n   \"ward\": \"ICU\",\r\n  \"bed\": \"09\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -675,7 +666,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6813e46f2ce34b43d7342837"
+									"value": "6816090f604974f1efe25ee2"
 								}
 							]
 						}
@@ -691,6 +682,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -709,44 +705,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6813e326e9f23588b7f117f4"
+									"value": "6816090f604974f1efe25ee2"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login Staff",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"drsmith@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/staff/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"staff",
-								"login"
 							]
 						}
 					},
@@ -758,6 +718,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsImlhdCI6MTc0NjQ4NTk3NywiZXhwIjoxNzQ2NDg5NTc3fQ.NNNlTOIafUOu6bOGJoDKUwqRZQUBqch-ee-W1_VGYzI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -776,7 +746,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/staff/:id",
+							"raw": "http://localhost:8000/api/staff/admissions/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -785,12 +755,13 @@
 							"path": [
 								"api",
 								"staff",
+								"admissions",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "679596ddff72a86f3f0572e4"
+									"value": "6816007963073c24ef0b844f"
 								}
 							]
 						}
@@ -848,11 +819,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MDcyNSwiZXhwIjoxNzQ3ODc0MzI1fQ.XDMpcOTraHtTINskIu4q-buQ183mOFkKvsQFTSgu37U",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"wards\": [\"Cardiology\", \"Pediatrics\"]\r\n}\r\n",
+							"raw": "{\r\n  \"wards\": [\"Cardiology\"]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -875,7 +851,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "679596ddff72a86f3f0572e4"
+									"value": "6808c6dc948d7139fc566105"
 								}
 							]
 						}
@@ -891,11 +867,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MjAxMSwiZXhwIjoxNzQ3ODc1NjExfQ.CSO6wfGry50wNV0rhfVcYCVF9vNfPQw_57432MSvtc0",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"schedule\": [\r\n    { \"date\": \"2025-01-30\", \"shift\": \"morning\" },\r\n    { \"date\": \"2025-01-31\", \"shift\": \"afternoon\" }\r\n  ]\r\n}\r\n",
+							"raw": "{\r\n  \"date\": \"2025-05-30\",\r\n  \"shift\": \"morning\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -918,8 +899,197 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "679596ddff72a86f3f0572e4"
+									"value": "6808c6dc948d7139fc566105"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Shift",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MjAxMSwiZXhwIjoxNzQ3ODc1NjExfQ.CSO6wfGry50wNV0rhfVcYCVF9vNfPQw_57432MSvtc0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2025-01-30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/staff/:id/remove-shift",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"staff",
+								":id",
+								"remove-shift"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6808c6dc948d7139fc566105"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Ward",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MjAxMSwiZXhwIjoxNzQ3ODc1NjExfQ.CSO6wfGry50wNV0rhfVcYCVF9vNfPQw_57432MSvtc0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ward\": \"Cardiology\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/staff/:id/remove-ward",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"staff",
+								":id",
+								"remove-ward"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6808c6dc948d7139fc566105"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staff Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsImlhdCI6MTc0NjQ4ODg2NywiZXhwIjoxNzQ2NDkyNDY3fQ.3cEF-hYK7xHgf5KA686SjFAEcXnXdD2iYAqo-CybfTo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/staff/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"staff",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Staffs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MjAxMSwiZXhwIjoxNzQ3ODc1NjExfQ.CSO6wfGry50wNV0rhfVcYCVF9vNfPQw_57432MSvtc0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/staff/all-stuffs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"staff",
+								"all-stuffs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Docor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzYzMwZGE0NTczOGZjZTFhOTMwNDAiLCJyb2xlIjoiU3RhZmYiLCJlbWFpbCI6Indvcmt3aXRoemVlc2hhYW5AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYWFzIiwibGFzdE5hbWUiOiJkc2RzZCIsInBob25lTnVtYmVyIjoiMjM0MjM0MjM0IiwiYWRkcmVzcyI6IndlcXF3ZSIsImlhdCI6MTc0Nzg3MjAxMSwiZXhwIjoxNzQ3ODc1NjExfQ.CSO6wfGry50wNV0rhfVcYCVF9vNfPQw_57432MSvtc0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dr Giacomo\",\n    \"email\": \"como@gmail.com\",\n    \"phoneNumber\": \"3435456566\",\n    \"address\": \"via somewhere 55\",\n    \"role\": \"doctor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/staff/add-doctor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"staff",
+								"add-doctor"
 							]
 						}
 					},
