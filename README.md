@@ -33,6 +33,13 @@ You can refer to the system diagram below:
 
 ---
 
+
+Each service has its own dedicated MongoDB database:
+
+![Diagram](screenshots/architecture.png)
+
+---
+
 ## Getting Started with the Project
 
 ### 1. Clone the repository
